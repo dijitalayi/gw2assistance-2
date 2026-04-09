@@ -211,3 +211,25 @@ export function getRarityColor(rarity?: string): string {
     default: return '#EEEEEE';
   }
 }
+
+/**
+ * Fetch Gems to Gold Exchange Rate
+ */
+export const fetchGemsToGoldExchange = async (quantity: number = 100) => {
+  return gw2Fetcher<any>({
+    endpoint: '/commerce/exchange/gems',
+    params: { quantity }
+  });
+};
+
+/**
+ * Fetch Gold to Gems Exchange Rate
+ * @param gold Amount in GOLD (not copper)
+ */
+export const fetchGoldToGemsExchange = async (gold: number = 100) => {
+  const coins = gold * 100 * 100; // Convert gold to copper
+  return gw2Fetcher<any>({
+    endpoint: '/commerce/exchange/gold',
+    params: { coins }
+  });
+};
