@@ -214,6 +214,7 @@ export function getRarityColor(rarity?: string): string {
 
 /**
  * Fetch Gems to Gold Exchange Rate
+ * @param quantity Amount of Gems to exchange
  */
 export const fetchGemsToGoldExchange = async (quantity: number = 100) => {
   return gw2Fetcher<any>({
@@ -224,12 +225,23 @@ export const fetchGemsToGoldExchange = async (quantity: number = 100) => {
 
 /**
  * Fetch Gold to Gems Exchange Rate
- * @param gold Amount in GOLD (not copper)
+ * @param gold Amount in GOLD (not copper) to exchange
  */
 export const fetchGoldToGemsExchange = async (gold: number = 100) => {
   const coins = gold * 100 * 100; // Convert gold to copper
   return gw2Fetcher<any>({
     endpoint: '/commerce/exchange/gold',
     params: { coins }
+  });
+};
+
+/**
+ * Fetch Pending Commerce Delivery (Items & Coins)
+ * @param apiKey GW2 API Key with tradingpost scope
+ */
+export const fetchCommerceDelivery = async (apiKey: string) => {
+  return gw2Fetcher<any>({
+    endpoint: '/commerce/delivery',
+    apiKey
   });
 };

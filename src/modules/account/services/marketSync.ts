@@ -19,6 +19,7 @@ class MarketSyncService {
     private STORE_NAME = 'market_index';
     private index: CompactItem[] = [];
     private isSyncing = false;
+    private progress = 0;
     private totalResults = 0;
 
     private CORE_ASSETS: CompactItem[] = [
@@ -92,6 +93,8 @@ class MarketSyncService {
 
             for (let i = 0; i < chunks.length; i += PARALLEL_SIZE) {
                 const currentChunks = chunks.slice(i, i + PARALLEL_SIZE);
+                this.progress = Math.round((i / chunks.length) * 100);
+                
                 await Promise.all(currentChunks.map(async (chunk) => {
                     const res = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(',')}&lang=en`);
                     if (res.ok) {
