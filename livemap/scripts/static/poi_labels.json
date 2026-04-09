@@ -1,0 +1,26 @@
+[
+  {
+    "id": 190000,
+    "coordinates": [61328,29090],
+    "type": "mastery",
+    "data": {
+      "type": "Tyria"
+    }
+  },
+  {
+    "id": 190001,
+    "coordinates": [52084,39514],
+    "type": "mastery",
+    "data": {
+      "type": "Tyria"
+    }
+  },
+  {
+    "id": 190002,
+    "coordinates": [53472,35257],
+    "type": "mastery",
+    "data": {
+      "type": "Tyria"
+    }
+  }
+]

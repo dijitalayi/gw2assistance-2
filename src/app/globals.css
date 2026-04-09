@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Grayscale Dark */
+  --color-gray-900: #212529;
+  --color-gray-800: #343a40;
+  --color-gray-700: #495057;
+  
+  /* Grayscale Mid */
+  --color-gray-600: #6c757d;
+  --color-gray-500: #adb5bd;
+  --color-gray-400: #ced4da;
+  
+  /* Grayscale Light */
+  --color-gray-300: #dee2e6;
+  --color-gray-200: #e9ecef;
+  --color-gray-100: #f8f9fa;
+  
+  /* Accents */
+  --color-accent: #eb5e28;
+  --color-earth: #403d39;
+  --color-beige: #ccc5b9;
+
+  /* Theme Defaults */
+  --background: var(--color-gray-100);
+  --foreground: var(--color-gray-900);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-outfit: var(--font-outfit);
+  
+  /* Map Colors to Tailwind */
+  --color-gw2-dark: var(--color-gray-900);
+  --color-gw2-surface: var(--color-gray-800);
+  --color-gw2-accent: var(--color-accent);
+  --color-gw2-muted: var(--color-gray-600);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+/* Base custom styles to force bypass Tailwind JIT staleness */
+.event-bg-day { 
+  background-color: rgba(30, 58, 138, 0.4) !important; 
+  color: #bfdbfe !important; 
+  border-color: rgba(29, 78, 216, 0.5) !important; 
+}
+.event-bg-night { 
+  background-color: #1e293b !important; 
+  color: #cbd5e1 !important; 
+  border-color: #334155 !important; 
+}
+.event-bg-hardcore { 
+  background-color: rgba(69, 10, 10, 0.9) !important; 
+  color: white !important; 
+  border-color: rgba(239, 68, 68, 0.5) !important; 
+}
+.event-bg-world { 
+  background-color: rgba(127, 29, 29, 0.8) !important; 
+  color: white !important; 
+  border-color: rgba(185, 28, 28, 0.5) !important; 
+}
+.event-text-clamp {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+}
+
+/* Modern & Premium Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(235, 94, 40, 0.3); /* Accent color with low opacity */
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(235, 94, 40, 0.6);
+}
+
+/* Firefox Support */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(235, 94, 40, 0.3) rgba(0, 0, 0, 0.1);
 }
