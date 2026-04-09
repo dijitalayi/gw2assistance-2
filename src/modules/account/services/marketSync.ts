@@ -6,6 +6,8 @@
  * Full index coverage + Live name hydration.
  */
 
+export type MarketCategory = 'All' | 'Weapon' | 'Armor' | 'Bag' | 'Material' | 'Consumable' | 'Trinket' | 'Upgrade';
+
 export interface CompactItem {
     id: number;
     name: string;
